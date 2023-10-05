@@ -9,6 +9,7 @@ import com.example.Warehouse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,12 +33,12 @@ public class AddUserServlet extends HttpServlet{
 		User userUser = new User (firstName, lastName);
 //		Warehouse.getInstance().addUser(userUser);
 		req.setAttribute("user", userUser);
-		req.getRequestDispatcher("/jsp/add.jsp").forward(req, resp);
+		RequestDispatcher requestDispatcher =req.getRequestDispatcher("/jsp/add.jsp");
+		requestDispatcher.forward(req, resp);
 	}	
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		super.destroy();
 	}
 }
