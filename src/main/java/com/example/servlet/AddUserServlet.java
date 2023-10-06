@@ -23,7 +23,8 @@ public class AddUserServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/jsp/add.jsp").forward(req, resp);	
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/add.jsp");
+		requestDispatcher.forward(req, resp);	
 	}
 	
 	@Override
@@ -31,10 +32,11 @@ public class AddUserServlet extends HttpServlet{
 		String firstName = req.getParameter("firstName");
 		String lastName = req.getParameter("lastName");
 		User userUser = new User (firstName, lastName);
-//		Warehouse.getInstance().addUser(userUser);
+		Warehouse warehouse = Warehouse.getInstance();
+		warehouse.addUser(userUser);
+		
 		req.setAttribute("user", userUser);
-		RequestDispatcher requestDispatcher =req.getRequestDispatcher("/jsp/add.jsp");
-		requestDispatcher.forward(req, resp);
+		doGet(req, resp);
 	}	
 	
 	@Override
