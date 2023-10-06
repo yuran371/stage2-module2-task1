@@ -7,7 +7,6 @@ public class Warehouse {
 
     private static Warehouse instance;
     private final Set<User> users = new HashSet<>();
-
     private Warehouse() {}
 
     public static Warehouse getInstance() {
@@ -19,6 +18,9 @@ public class Warehouse {
 
     public void addUser(User user) {
         users.add(user);
+    }
+    public void removeUser(User user) {
+    	users.remove(user);
     }
 
     public Set<User> getUsers() {

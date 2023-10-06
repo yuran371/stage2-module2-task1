@@ -33,10 +33,16 @@ public class AddUserServlet extends HttpServlet{
 		String lastName = req.getParameter("lastName");
 		User userUser = new User (firstName, lastName);
 		Warehouse warehouse = Warehouse.getInstance();
-		warehouse.addUser(userUser);
+		if (!warehouse.getUsers().contains(userUser)) {
+			warehouse.addUser(userUser);
+			req.setAttribute("user", userUser);
+			doGet(req, resp);
+		} else {
+			req.setAttribute("user", null);
+			doGet(req, resp);
+		}
 		
-		req.setAttribute("user", userUser);
-		doGet(req, resp);
+		
 	}	
 	
 	@Override

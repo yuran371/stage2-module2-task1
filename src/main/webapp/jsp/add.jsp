@@ -1,3 +1,5 @@
+<%@page import="java.util.HashSet"%>
+<%@page import="com.example.Warehouse"%>
 <%@ page import="com.example.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -10,9 +12,14 @@
 <div class="w3-container" style="margin-left:10px; width:400px;">
     <%
         User user = (User) request.getAttribute("user");
-        if (user != null) {
+    	Warehouse wh = Warehouse.getInstance();
+    	
+    	if (user!=null) {
             out.println("<p>User '" + user.getFirstName() + " " + user.getLastName() + "' added!</p>");
-        }
+    	} else {
+    		out.println("User already exist!");
+    	} 
+        
     %>
     <h3 class="title w3-text-black">
         <span>Add user</span>
@@ -26,6 +33,7 @@
     </form>
     <div>
         <button class="w3-btn w3-light-blue w3-round-large" onclick="location.href='/users'">Users</button>
+        <button class="w3-btn w3-light-blue w3-round-large" onclick="location.href='/'">Home</button>
     </div>
 </div>
 </body>

@@ -9,6 +9,7 @@
     <div class="w3-bar w3-padding-large w3-padding-24">
         <button class="w3-btn w3-green w3-round-large" onclick="location.href='/add'">Add User</button>
         <button class="w3-btn w3-light-blue w3-round-large" onclick="location.href='/users'">Users</button>
+        <button class="w3-btn w3-red w3-round-large" onclick="location.href='/remove'">Remove User</button>
     </div>
 </div>
 </body>
